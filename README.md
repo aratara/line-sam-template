@@ -54,7 +54,7 @@ cd echo-bot-project
 sam build
 ```
 
-#### 5. Deploy the project
+#### 5. Run the project locally
 ```
 sam local start-api --env-vars vars.json
 ```
