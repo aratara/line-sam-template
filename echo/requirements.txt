@@ -1,0 +1,14 @@
+aiohttp
+aiosignal
+async-timeout
+attrs
+certifi
+charset-normalizer
+frozenlist
+future
+idna
+line-bot-sdk
+multidict
+requests
+urllib3
+yarl

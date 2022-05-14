@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  line-echo-bot
+
+  Sample SAM Template for LINEbot_Fitness
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Environment:
+      Variables:
+        CHANNEL_ACCESS_TOKEN: CHANNEL_ACCESS_TOKEN
+        CHANNEL_SECRET: CHANNEL_SECRET
+    Timeout: 5
+
+Resources:
+  LINEbotFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: echo/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        LINEbot:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /echo
+            Method: post
+
+Outputs:
+  LINEbotApi:
+    Description: "API Gateway endpoint URL for Prod stage for LINEbot fitness function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/echo/"
+  LINEbotFunction:
+    Description: "LINEbot fitness Lambda Function ARN"
+    Value: !GetAtt LINEbotFunction.Arn
+  LINEbotFunctionIamRole:
+    Description: "Implicit IAM Role created for LINEbot fitness function"
+    Value: !GetAtt LINEbotFunctionRole.Arn
