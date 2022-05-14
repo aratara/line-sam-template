@@ -3,7 +3,14 @@ AWS SAM Custom Template for LINE Messaging API Echo bot.
 
 ## Installation
 
-#### 1. Initialize the project
+#### 1. Create new directory
+```
+mkdir bot-demo
+
+cd bot-demo
+```  
+
+#### 2. Initialize the project
 ```
 sam init
 ```  
@@ -24,7 +31,7 @@ Then copy and paste the [remote repo link](https://github.com/aratara/line-sam-t
 > Choice: 2
 <br>
 
-#### 2. Enter keys for the line messaging api access.
+#### 3. Enter keys for the line messaging api access.
 
 You can create your own line-bot project and corresponding keys from [LINE Developers Console](https://developers.line.biz/console/).  
 Both ACCESS_KEY and SECRET_KEY are required to the LINE Messaging API access.  
@@ -40,12 +47,14 @@ Copy and paste both of the keys to the vars.json.
 }
 ```
 
-#### 3. Build the project
+#### 4. Build the project
 ```
+cd echo-bot-project
+
 sam build
 ```
 
-#### 4. Deploy the project
+#### 5. Deploy the project
 ```
 sam local start-api --env-vars vars.json
 ```
